@@ -51,7 +51,7 @@ class ActivityController extends Controller
         $activityType = ActivityType::find($request->input('activity_type_id'));
 
         $activity = new Activity;
-        $activity->activity_type->associate($activityType);
+        $activity->activity_type()->associate($activityType);
         $activity->academic_year = $request->input('academic_year');
         $activity->term = $request->input('term');
         $activity->start_date = $request->input('start_date');
@@ -89,7 +89,7 @@ class ActivityController extends Controller
             
             $activityType = ActivityType::find($request->input('activity_type_id'));
 
-            $activity->activity_type->associate($activityType);
+            $activity->activity_type()->associate($activityType);
             $activity->academic_year = $request->input('academic_year');
             $activity->term = $request->input('term');
             $activity->start_date = $request->input('start_date');
