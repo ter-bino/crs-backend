@@ -1,8 +1,8 @@
 [Laravel Documentation](https://laravel.com/docs)
 
-Must have CLI for:
-    - `php` - version 8.2.11
-    - `composer` - version 2.6.5
+Must have CLI for:\
+    - `php` - version 8.2.11\
+    - `composer` - version 2.6.5\
 
 
 Clone the project via:\
