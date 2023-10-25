@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $response = [
+        'error' => [
+            'message' => 'This is an API only Laravel backend. Please use /api endpoint.'
+        ],
+        'status' => 404,
+    ];
+
+    return response()->json($response, 404);
 });
