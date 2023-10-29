@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('college_id');
             $table->string('college_code')->unique();
             $table->string('college_title')->unique();
-            $table->int('num_terms');
+            $table->integer('num_terms');
             $table->boolean('active_status');
             $table->timestamps();
         });
