@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('user_accounts', function (Blueprint $table) {
             $table->id('user_account_id');
-            $table->string('plm_email_address');
+            $table->string('plm_email_address')->unique();
             $table->string('user_password');
             $table->date('account_expiry_date');
-            $table->boolean('active_status');
+            $table->boolean('active_status')->default(true);
             $table->timestamps();
         });
     }
