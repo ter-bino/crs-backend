@@ -16,10 +16,11 @@ return new class extends Migration
             $table->string('subject_code');
             $table->string('subject_title');
             $table->string('subject_type');
-            $table->int('units');
-            $table->int('credited_units');
+            $table->integer('units');
+            $table->integer('credited_units');
             $table->boolean('active_status');
             $table->timestamps();
+            
         });
     }
 
