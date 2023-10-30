@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('activity_type_id')->constrained(
                 table: 'activity_type', column: 'activity_type_id'
             );
-            $table->year('academic_year');
+            $table->string('academic_year');
             $table->integer('term');
             $table->date('start_date');
             $table->time('start_time');

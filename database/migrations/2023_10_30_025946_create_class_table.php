@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('subject_id')->constrained(
                 table: 'subject', column: 'subject_id'
             );
-            $table->year('academic_year');
+            $table->string('academic_year');
             $table->integer('term');
             $table->integer('minimum_year_level');
             $table->integer('section');
