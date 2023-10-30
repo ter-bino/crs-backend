@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('minimum_year_level');
             $table->integer('section');
             $table->integer('slots');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->boolean('active_status');
             $table->timestamps();
         });

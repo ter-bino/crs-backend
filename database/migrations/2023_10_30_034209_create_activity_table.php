@@ -18,10 +18,8 @@ return new class extends Migration
             );
             $table->string('academic_year');
             $table->integer('term');
-            $table->date('start_date');
-            $table->time('start_time');
-            $table->date('end_date');
-            $table->time('end_time');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->timestamps();
         });
     }
