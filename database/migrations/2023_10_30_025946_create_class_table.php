@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('class', function (Blueprint $table) {
             $table->id('class_id');
-            $table->foreignId('subject_id')->constrained();
+            $table->foreignId('subject_id')->constrained(
+                table: 'subject', column: 'subject_id'
+            );
             $table->year('academic_year');
             $table->integer('term');
             $table->integer('minimum_year_level');
