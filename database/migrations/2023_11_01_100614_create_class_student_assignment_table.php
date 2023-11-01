@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('student_id')->constrained(
                 table: 'student', column: 'student_id'
             );
+            $table->decimal('grade', 5, 4);
             
             # create composite key
             $table->primary(['class_id', 'student_id']);
