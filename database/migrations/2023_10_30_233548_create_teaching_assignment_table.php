@@ -12,15 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('teaching_assignment', function (Blueprint $table) {
+            $table->id('teaching_assignment_id');
             $table->foreignId('instructor_id')->constrained(
                 table: 'instructor', column: 'instructor_id'
+            );
+            $table->foreignId('consultation_hour_id')->constrained(
+                table: 'consultation_hour', column: 'consultation_hour_id'
             );
             $table->string('academic_year');
             $table->integer('term');
             $table->dateTime('start_date');
-
-            # creating composite primary key
-            $table->primary(['instructor_id', 'academic_year', 'term']);
 
             $table->timestamps();
         });
