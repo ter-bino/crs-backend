@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teaching_assignment', function (Blueprint $table) {
-            $table->id('teaching_assignment_id');
+        Schema::create('instructor_department_assignment', function (Blueprint $table) {
             $table->foreignId('instructor_id')->constrained(
                 table: 'instructor', column: 'instructor_id'
             );
-            $table->foreignId('consultation_hour_id')->constrained(
-                table: 'consultation_hour', column: 'consultation_hour_id'
+            $table->foreignId('department_id')->constrained(
+                table: 'department', column: 'department_id'
             );
-            $table->string('academic_year');
-            $table->integer('term');
-            $table->dateTime('start_date');
+
+            # create composite key
+            $table->primary(['instructor_id', 'department_id']);
 
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teaching_assignment');
+        Schema::dropIfExists('instructor_department_assignment');
     }
 };
