@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CollegeController;
 use App\Http\Controllers\Api\SampleController;
 
 /*
@@ -20,3 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/sample-route', [SampleController::class, 'sampleRoute']);
+
+//TODO: Protect controllers with role checks
+
+Route::apiResource('colleges', CollegeController::class);
