@@ -13,7 +13,6 @@ class PaymentTransaction extends Model
     protected $primaryKey = 'payment_transaction_id';
     
     protected $fillable = [
-        'student_balance_id',
         'payment_order',
         'payment_method',
         'payment_status',
@@ -26,10 +25,4 @@ class PaymentTransaction extends Model
         'date'
     ];
 
-    protected $casts = [
-        'excess_amount' => 'decimal:2',  
-        'amount' => 'decimal:2',        
-        'time' => 'datetime',
-        'date' => 'date',   
-    ];
 }

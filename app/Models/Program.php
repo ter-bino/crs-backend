@@ -13,7 +13,6 @@ class Program extends Model
     protected $primaryKey = 'program_id'; //connected table name primary key
 
     protected $fillable = [
-        'college_id',
         'program_code',
         'program_name',
         'program_type',
@@ -21,8 +20,4 @@ class Program extends Model
         'num_years'
     ];
 
-    protected $casts = [
-        'active_status' => 'boolean',
-        'num_years' => 'integer'
-    ];
 }

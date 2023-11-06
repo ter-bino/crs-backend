@@ -13,7 +13,6 @@ class Department extends Model
     protected $primaryKey = 'department_id'; //connected table name primary key
 
     protected $fillable = [
-        'program_id',
         'department_code',
         'department_name'
     ];

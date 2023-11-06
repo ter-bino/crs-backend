@@ -13,7 +13,6 @@ class Instructor extends Model
     protected $primaryKey = 'instructor_id'; //connected table name primary key
 
     protected $fillable = [
-        'staff_id',
         'instructor_code',
         'teaching_position',
         'employment_type'

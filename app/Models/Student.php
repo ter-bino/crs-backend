@@ -13,8 +13,6 @@ class Student extends Model
     protected $primaryKey = 'student_id'; //connected table name primary key
 
     protected $fillable = [
-        'user_account_id',
-        'address_id',
         'student_no',
         'entry_academic_year',
         'first_name',
@@ -29,9 +27,5 @@ class Student extends Model
         'birth_place',
         'contact_no',
         'personal_email'
-    ];
-
-    protected $casts = [
-        'birth_date' => 'date'
     ];
 }

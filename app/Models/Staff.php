@@ -13,8 +13,6 @@ class Staff extends Model
     protected $primaryKey = 'staff_id'; //connected table name primary key
 
     protected $fillable = [
-        'user_account_id',
-        'address_id',
         'employee_number',
         'designation',
         'first_name',
@@ -31,9 +29,5 @@ class Staff extends Model
         'personal_email',
         'TIN_no',
         'GSIS_no'
-    ];
-
-    protected $casts = [
-        'birth_date' => 'date'
     ];
 }

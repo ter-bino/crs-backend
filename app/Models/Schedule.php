@@ -13,16 +13,8 @@ class Schedule extends Model
     protected $primaryKey = 'schedule_id'; //connected table name primary key
 
     protected $fillable = [
-        'room_id',
-        'meeting_type_id',
-        'class_id',
         'day',
         'start_time',
         'end_time'
-    ];
-
-    protected $casts = [
-        'start_time' => 'datetime',
-        'end_time' => 'datetime'
     ];
 }
