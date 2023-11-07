@@ -28,11 +28,6 @@ class UserAccount extends Model
         'active_status' => 'boolean'
     ];
 
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(Role::class, 'user_roles', 'user_account_id', 'role_id');
-    }
-
     public function student(): HasOne
     {
         return $this->hasOne(Student::class, 'user_account_id', 'user_account_id');
@@ -41,5 +36,10 @@ class UserAccount extends Model
     public function staff(): HasOne
     {
         return $this->hasOne(Staff::class, 'user_account_id', 'user_account_id');
+    }
+
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'user_roles', 'user_account_id', 'role_id');
     }
 }
