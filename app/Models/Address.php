@@ -23,8 +23,18 @@ class Address extends Model
         'telephone_no'
     ];
 
-    public function student(): HasOne
+    public function resident(): HasOne
+    {
+        return $this->student ?? $this->staff ?? null;
+    }
+
+    private function student(): HasOne
     {
         return $this->hasOne(Student::class, 'address_id', 'address_id');
+    }
+
+    private function staff(): HasOne
+    {
+        return $this->hasOne(Staff::class, 'address_id', 'address_id');
     }
 }
