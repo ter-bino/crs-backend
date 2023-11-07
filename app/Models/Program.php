@@ -28,14 +28,14 @@ class Program extends Model
         return $this->belongsTo(College::class, 'college_id','college_id');
     }
 
-    public function student_terms(): HasMany
-    {
-        return $this->hasMany(StudentTerm::class, 'program_id', 'program_id');
-    }
-
     public function department(): HasOne
     {
         return $this->hasOne(Department::class, 'program_id', 'program_id');
+    }
+
+    public function student_terms(): HasMany
+    {
+        return $this->hasMany(StudentTerm::class, 'program_id', 'program_id');
     }
 
     public function blocks(): HasMany
