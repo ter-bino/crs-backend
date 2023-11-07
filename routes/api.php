@@ -16,12 +16,16 @@ use App\Http\Controllers\Api\SampleController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+/*
+ * Exposed API endpoints go here
+ */
+Route::group(['middlware'=>['cors', 'json.response']], function() {
+    Route::get('/sample-route', [SampleController::class, 'sampleRoute']);
 });
 
-Route::get('/sample-route', [SampleController::class, 'sampleRoute']);
-
-//TODO: Protect controllers with role checks
-
-Route::apiResource('colleges', CollegeController::class);
+/*
+ * Protected API endpoints go here
+ */
+Route::middleware('auth:api')->group(function () {
+    Route::apiResource('colleges', CollegeController::class);
+});
