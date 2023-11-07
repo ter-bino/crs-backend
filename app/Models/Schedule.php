@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
@@ -17,4 +18,9 @@ class Schedule extends Model
         'start_time',
         'end_time'
     ];
+
+    public function meeting_type(): BelongsTo
+    {
+        return $this->belongsTo(MeetingType::class, 'meeting_type_id', 'meeting_type_id');
+    }
 }
