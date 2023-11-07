@@ -36,7 +36,7 @@ class M_Class extends Model
         return $this->belongsTo(InstructionLanguage::class, 'instruction_language_id', 'instruction_language_id');
     }
 
-    public function teachingAssignments(): BelongsToMany
+    public function teaching_assignments(): BelongsToMany
     {
         return $this->belongsToMany(TeachingAssignment::class, 'faculty_class_assignment', 'class_id', 'teaching_assignment_id');
     }
