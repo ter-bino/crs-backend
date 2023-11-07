@@ -23,7 +23,7 @@ class Instructor extends Model
 
     public function staff_info(): BelongsTo
     {
-        return $this->belongsTo(Program::class, 'staff_id', 'staff_id');
+        return $this->belongsTo(Staff::class, 'staff_id', 'staff_id');
     }
 
     public function teaching_assignments(): HasMany
