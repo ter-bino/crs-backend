@@ -24,7 +24,7 @@ class StudentTerm extends Model
         'is_graduating'
     ];
 
-    public function student()
+    public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class, 'student_id'. 'student_id');
     }

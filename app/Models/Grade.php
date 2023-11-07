@@ -6,23 +6,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class AddDropRequest extends Model
+class Grade extends Model
 {
     use HasFactory;
     public $timestamps = true; 
-    protected $table = 'add_drop_request'; // connected table name
-    protected $primaryKey = 'add_drop_request_id'; //connected table name primary key
+
+    protected $table = 'class_student_assignment';
+
+    protected $primaryKey = ['student_id', 'class_id'];
 
     protected $fillable = [
-        'request_date',
-        'total_units',
-        'reason',
-        'status',
-        'approved_date'
+        'grade',
+        'remarks'
     ];
 
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class, 'student_id', 'student_id');
+    }
+
+    public function class(): BelongsTo
+    {
+        return $this->belongsTo(M_class::class, 'class_id', 'class_id');
     }
 }
