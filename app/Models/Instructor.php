@@ -18,4 +18,8 @@ class Instructor extends Model
         'employment_type'
     ];
 
+    public function staff()
+    {
+        return $this->belongsTo(Program::class, 'staff_id', 'staff_id');
+    }
 }

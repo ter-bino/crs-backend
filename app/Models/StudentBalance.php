@@ -31,4 +31,9 @@ class StudentBalance extends Model
         'overall_paid' => 'decimal:12,2',
         'overall_balance' => 'decimal:12,2'
     ];
+    
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id', 'student_id');
+    }
 }

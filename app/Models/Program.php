@@ -20,4 +20,8 @@ class Program extends Model
         'num_years'
     ];
 
+    public function college()
+    {
+        return $this->belongsTo(College::class, 'college_id','college_id');
+    }
 }

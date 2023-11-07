@@ -30,4 +30,14 @@ class Staff extends Model
         'TIN_no',
         'GSIS_no'
     ];
+    
+    public function user_account()
+    {
+        return $this->belongsTo(UserAccount::class, 'user_account_id', 'user_account_id');
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class, 'address_id', 'address_id');
+    }
 }
