@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Instructor extends Model
 {
@@ -18,7 +19,7 @@ class Instructor extends Model
         'employment_type'
     ];
 
-    public function staff()
+    public function staff_info(): BelongsTo
     {
         return $this->belongsTo(Program::class, 'staff_id', 'staff_id');
     }
