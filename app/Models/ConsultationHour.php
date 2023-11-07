@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ConsultationHour extends Model
 {
@@ -16,6 +17,12 @@ class ConsultationHour extends Model
     protected $fillable = [
         'day',
         'start_time',
-        'end_time'
+        'end_time',
+        'total_hours'
     ];
+
+    public function teaching_assignment(): BelongsTo
+    {
+        return $this->belongsTo(TeachingAssignment::class, 'teaching_assignment_id', 'teaching_assignment_id');
+    }
 }
