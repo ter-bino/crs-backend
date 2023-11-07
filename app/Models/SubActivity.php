@@ -17,4 +17,9 @@ class SubActivity extends Model
         'start_date',
         'end_date'
     ];
+
+    public function activity()
+    {
+        return $this->belongsTo(Activity::class, 'activity_id', 'activity_id');
+    }
 }
