@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class M_Class extends Model
@@ -23,4 +24,9 @@ class M_Class extends Model
         'end_date',
         'active_status'
     ];
+
+    public function instruction_language(): BelongsTo
+    {
+        return $this->belongsTo(InstructionLanguage::class, 'instruction_language_id', 'instruction_language_id');
+    }
 }
