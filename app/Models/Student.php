@@ -57,6 +57,11 @@ class Student extends Model
         return $this->hasMany(StudentTerm::class, 'student_id', 'student_id');
     }
 
+    public function student_balances(): HasMany
+    {
+        return $this->hasMany(StudentBalance::class, 'student_id', 'student_id');
+    }
+
     public function classes(): BelongsToMany
     {
         return $this->belongsToMany(M_class::class, 'class_student_assignment', 'student_id', 'class_id');
