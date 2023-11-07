@@ -16,4 +16,9 @@ class Department extends Model
         'department_code',
         'department_name'
     ];
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class, 'program_id', 'program_id');
+    }
 }

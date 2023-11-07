@@ -28,4 +28,14 @@ class Student extends Model
         'contact_no',
         'personal_email'
     ];
+
+    public function user_account()
+    {
+        return $this->belongsTo(UserAccount::class, 'user_account_id', 'user_account_id');
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class, 'address_id', 'address_id');
+    }
 }

@@ -25,4 +25,8 @@ class PaymentTransaction extends Model
         'date'
     ];
 
+    public function student_balance()
+    {
+        return $this->belongsTo(StudentBalance::class, 'student_balance_id', 'student_balance_id');
+    }
 }
