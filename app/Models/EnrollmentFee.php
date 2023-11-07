@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class EnrollmentFee extends Model
 {
@@ -24,4 +25,9 @@ class EnrollmentFee extends Model
         'cost' => 'decimal:12,4'
     ];
 
+
+    public function student_balances(): BelongsToMany
+    {
+        return $this->belongsToMany(StudentBalance::class, 'fees_to_pay', 'enrollment_fee_id', 'student_balance_id');
+    }
 }
