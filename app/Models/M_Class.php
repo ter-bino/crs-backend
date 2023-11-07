@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class M_Class extends Model
 {
@@ -34,6 +35,11 @@ class M_Class extends Model
     public function instruction_language(): BelongsTo
     {
         return $this->belongsTo(InstructionLanguage::class, 'instruction_language_id', 'instruction_language_id');
+    }
+
+    public function grades(): HasMany
+    {
+        return $this->hasMany(Grade::class, 'class_id', 'class_id');
     }
 
     public function teaching_assignments(): BelongsToMany
