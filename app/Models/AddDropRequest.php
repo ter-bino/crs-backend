@@ -22,7 +22,7 @@ class AddDropRequest extends Model
         'approved_date'
     ];
 
-    public function student(): BelongsTo
+    public function requestor(): BelongsTo
     {
         return $this->belongsTo(Student::class, 'student_id', 'student_id');
     }
