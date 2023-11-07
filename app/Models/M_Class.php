@@ -41,6 +41,11 @@ class M_Class extends Model
         return $this->belongsToMany(TeachingAssignment::class, 'faculty_class_assignment', 'class_id', 'teaching_assignment_id');
     }
 
+    public function load_types(): BelongsToMany
+    {
+        return $this->belongsToMany(LoadType::class, 'faculty_class_assignment', 'class_id', 'load_type_id');
+    }
+
     public function students(): BelongsToMany
     {
         return $this->belongsToMany(Student::class, 'class_student_assignment', 'class_id', 'student_id');
