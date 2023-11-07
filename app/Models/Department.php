@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Department extends Model
 {
@@ -17,8 +19,13 @@ class Department extends Model
         'department_name'
     ];
 
-    public function program()
+    public function program(): BelongsTo
     {
         return $this->belongsTo(Program::class, 'program_id', 'program_id');
+    }
+
+    public function instructors(): BelongsToMany
+    {
+        return $this->belongsToMany(Instructor::class, 'instructor_department_assignment', 'department_id', 'instructor_id');
     }
 }
