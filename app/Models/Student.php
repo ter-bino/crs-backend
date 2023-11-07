@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Student extends Model
 {
@@ -34,8 +35,8 @@ class Student extends Model
         return $this->belongsTo(UserAccount::class, 'user_account_id', 'user_account_id');
     }
 
-    public function address()
+    public function address(): HasOne
     {
-        return $this->belongsTo(Address::class, 'address_id', 'address_id');
+        return $this->hasOne(Address::class, 'address_id', 'address_id');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Address extends Model
 {
@@ -20,4 +21,9 @@ class Address extends Model
         'zip_code',
         'telephone_no'
     ];
+
+    public function student(): BelongsTo
+    {
+        return $this->belongsTo(Student::class, 'address_id', 'address_id');
+    }
 }
