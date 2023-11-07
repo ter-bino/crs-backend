@@ -29,7 +29,7 @@ class StudentTerm extends Model
         return $this->belongsTo(Student::class, 'student_id'. 'student_id');
     }
 
-    public function program()
+    public function program(): BelongsTo
     {
         return $this->belongsTo(Program::class, 'program_id', 'program_id');
     }
@@ -39,7 +39,7 @@ class StudentTerm extends Model
         return $this->belongsTo(College::class, 'college_id','college_id');
     }
 
-    public function block()
+    public function block(): BelongsTo
     {
         return $this->belongsTo(Block::class, 'block_id', 'block_id');
     }
