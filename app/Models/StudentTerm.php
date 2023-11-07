@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class StudentTerm extends Model
 {
@@ -42,8 +43,8 @@ class StudentTerm extends Model
         return $this->belongsTo(Block::class, 'block_id', 'block_id');
     }
 
-    public function enrollment_status()
+    public function enrollment_status(): HasOne
     {
-        return $this->belongsTo(EnrollmentStatus::class, 'enrollment_status_id', 'enrollment_status_id');
+        return $this->hasOne(EnrollmentStatus::class, 'enrollment_status_id', 'enrollment_status_id');
     }
 }
