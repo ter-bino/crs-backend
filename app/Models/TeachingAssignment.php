@@ -28,7 +28,7 @@ class TeachingAssignment extends Model
 
     public function consultation_hours(): HasMany
     {
-        return $this->hasMany(ConsultationHour::class, 'teachinh_assignment_id', 'teaching_assignment_id');
+        return $this->hasMany(ConsultationHour::class, 'teaching_assignment_id', 'teaching_assignment_id');
     }
 
     public function load_types(): BelongsToMany
