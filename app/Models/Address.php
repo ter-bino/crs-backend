@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Address extends Model
 {
@@ -20,4 +22,19 @@ class Address extends Model
         'zip_code',
         'telephone_no'
     ];
+
+    public function resident(): HasOne
+    {
+        return $this->student ?? $this->staff ?? null;
+    }
+
+    private function student(): HasOne
+    {
+        return $this->hasOne(Student::class, 'address_id', 'address_id');
+    }
+
+    private function staff(): HasOne
+    {
+        return $this->hasOne(Staff::class, 'address_id', 'address_id');
+    }
 }

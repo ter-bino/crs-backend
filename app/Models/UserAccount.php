@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class UserAccount extends Model
 {
@@ -25,4 +27,19 @@ class UserAccount extends Model
         'account_expiry_date' => 'date',
         'active_status' => 'boolean'
     ];
+
+    public function student(): HasOne
+    {
+        return $this->hasOne(Student::class, 'user_account_id', 'user_account_id');
+    }
+
+    public function staff(): HasOne
+    {
+        return $this->hasOne(Staff::class, 'user_account_id', 'user_account_id');
+    }
+
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'user_roles', 'user_account_id', 'role_id');
+    }
 }

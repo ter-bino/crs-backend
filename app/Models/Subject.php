@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Subject extends Model
 {
@@ -25,4 +27,19 @@ class Subject extends Model
     protected $casts = [
         'active_status' => 'boolean',
     ];
+
+    public function classes(): HasMany
+    {
+        return $this->hasMany(M_Class::class, 'subject_id', 'subject_id');
+    }
+
+    public function co_requisites(): BelongsToMany
+    {
+        return $this->belongsToMany(Subject::class, 'co_requisite', 'subject_id', 'co_requisite_subject_id');
+    }
+
+    public function pre_requisites(): BelongsToMany
+    {
+        return $this->belongsToMany(Subject::class, 'pre_requisite', 'subject_id', 'pre_requisite_subject_id');
+    }
 }

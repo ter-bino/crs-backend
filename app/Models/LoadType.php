@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class LoadType extends Model
 {
@@ -17,4 +18,14 @@ class LoadType extends Model
         'load_type_code',
         'load_type_name'
     ];
+
+    public function teaching_assignments(): BelongsToMany
+    {
+        return $this->belongsToMany(TeachingAssignment::class, 'faculty_class_assignment', 'load_type_id', 'teaching_assignment_id');
+    }
+
+    public function classes(): BelongsToMany
+    {
+        return $this->belongsToMany(M_Class::class, 'faculty_class_assignment', 'load_type_id', 'class_id');
+    }
 }
