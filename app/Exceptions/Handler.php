@@ -34,6 +34,12 @@ class Handler extends ExceptionHandler
                     'message' => 'College not found',
                 ], 404);
             }
+            
+            if($request->is('api/programss/*')) {
+                return response()->json([
+                    'message' => 'Program not found',
+                ], 404);
+            }
         });
     }
 }

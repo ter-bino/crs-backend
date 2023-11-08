@@ -28,4 +28,5 @@ Route::group(['middlware'=>['cors', 'json.response']], function() {
  */
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('colleges', CollegeController::class);
+    Route::apiResource('programs', ProgramController::class);
 });
