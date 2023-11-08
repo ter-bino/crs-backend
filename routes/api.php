@@ -21,12 +21,13 @@ use App\Http\Controllers\Api\SampleController;
  */
 Route::group(['middlware'=>['cors', 'json.response']], function() {
     Route::get('/sample-route', [SampleController::class, 'sampleRoute']);
+    Route::apiResource('colleges', CollegeController::class);
 });
 
 /*
  * Protected API endpoints go here
  */
 Route::middleware('auth:api')->group(function () {
-    Route::apiResource('colleges', CollegeController::class);
+    
     Route::apiResource('programs', ProgramController::class);
 });
