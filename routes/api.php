@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CollegeController;
+use App\Http\Controllers\Api\EnrollmentFeeController;
 use App\Http\Controllers\Api\SampleController;
+use App\Http\Controllers\Api\ProgramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +20,16 @@ use App\Http\Controllers\Api\SampleController;
 /*
  * Exposed API endpoints go here
  */
-Route::group(['middlware'=>['cors', 'json.response']], function() {
+Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::get('/sample-route', [SampleController::class, 'sampleRoute']);
+    Route::apiResource('enrollment-fees', EnrollmentFeeController::class);
+    Route::apiResource('colleges', CollegeController::class);
+    Route::apiResource('programs', ProgramController::class);
 });
 
 /*
  * Protected API endpoints go here
  */
 Route::middleware('auth:api')->group(function () {
-    Route::apiResource('colleges', CollegeController::class);
-    Route::apiResource('programs', ProgramController::class);
+    //not working for now
 });
