@@ -25,6 +25,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('enrollment-fees', EnrollmentFeeController::class);
     Route::apiResource('colleges', CollegeController::class);
     Route::apiResource('programs', ProgramController::class);
+    Route::apiResource('enrollment-status', EnrollmentStatusController::class);
 });
 
 /*
