@@ -37,9 +37,13 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Enrollment fee not found',
                 ], 404);
-            } else if($request->is('api/programss/*')) {
+            } else if($request->is('api/programs/*')) {
                 return response()->json([
                     'message' => 'Program not found',
+                ], 404);
+            } else if($request->is('api/enrollment-status/*')) {
+                return response()->json([
+                    'message' => 'Enrollment status not found',
                 ], 404);
             }
         });
