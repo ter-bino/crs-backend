@@ -33,6 +33,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'College not found',
                 ], 404);
+            } else if($request->is('api/enrollment-fees/*')) {
+                return response()->json([
+                    'message' => 'Enrollment fee not found',
+                ], 404);
             }
         });
     }
