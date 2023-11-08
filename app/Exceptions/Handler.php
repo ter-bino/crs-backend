@@ -45,6 +45,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Enrollment status not found',
                 ], 404);
+            } else if($request->is('api/address/*')) {
+                return response()->json([
+                    'message' => 'Address not found',
+                ], 404);
             }
         });
     }
