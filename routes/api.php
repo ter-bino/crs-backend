@@ -22,6 +22,7 @@ use App\Http\Controllers\Api\SampleController;
  */
 Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::get('/sample-route', [SampleController::class, 'sampleRoute']);
+    Route::apiResource('enrollment-fees', EnrollmentFeeController::class);
     Route::apiResource('colleges', CollegeController::class);
 });
 
