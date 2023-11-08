@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CollegeController;
 use App\Http\Controllers\Api\EnrollmentFeeController;
 use App\Http\Controllers\Api\SampleController;
+use App\Http\Controllers\Api\ProgramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +24,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::get('/sample-route', [SampleController::class, 'sampleRoute']);
     Route::apiResource('enrollment-fees', EnrollmentFeeController::class);
     Route::apiResource('colleges', CollegeController::class);
+    Route::apiResource('programs', ProgramController::class);
 });
 
 /*
