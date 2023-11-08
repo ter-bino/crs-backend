@@ -21,11 +21,6 @@ class EnrollmentFee extends Model
         'cost'
     ];
 
-    protected $casts = [
-        'cost' => 'decimal:12,4'
-    ];
-
-
     public function student_balances(): BelongsToMany
     {
         return $this->belongsToMany(StudentBalance::class, 'fees_to_pay', 'enrollment_fee_id', 'student_balance_id');
