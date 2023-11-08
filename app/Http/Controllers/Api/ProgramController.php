@@ -29,7 +29,7 @@ class ProgramController extends Controller
         })
         ->paginate($perPage, ['*'], 'page', $page);
 
-        return response()->json($programs, 200);
+        return response()->json($programs);
     }
 
     /**
@@ -68,7 +68,7 @@ class ProgramController extends Controller
     public function show(Program $program)
     {
         if ($program) {
-            return response()->json($program, 200);
+            return response()->json($program);
         } else {
             return response()->json(['message' => 'Program not found'], 404);
         }
@@ -101,7 +101,7 @@ class ProgramController extends Controller
                 'active_status' => $request->input('active_status', $program->active_status), //default to old value if not provided
             ]);
     
-            return response()->json($program, 200);
+            return response()->json($program);
         } else {
             return response()->json(['message' => 'Program not found'], 404);
         }
@@ -116,7 +116,7 @@ class ProgramController extends Controller
     {
         if ($program) {
             $program->delete();
-            return response()->json(['message' => 'Program deleted'], 200);
+            return response()->json(['message' => 'Program deleted']);
         } else {
             return response()->json(['message' => 'Program not found'], 404);
         }
