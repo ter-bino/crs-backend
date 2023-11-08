@@ -93,11 +93,11 @@ class ProgramController extends Controller
             ]);
     
             $program->update([
-                'college_id' => $request->input('college_id', $program->college_id), //default to old value if not provided
-                'program_code' => $request->input('program_code', $program->program_code), //default to old value if not provided
-                'program_name' => $request->input('program_name', $program->program_name), //default to old value if not provided
-                'num_years' => $request->input('num_years', $program->num_years), //default to old value if not provided
-                'program_type' => $request->input('program_type', $program->program_type), //default to old value if not provided
+                'college_id' => $request->input('college_id'), //default to old value if not provided
+                'program_code' => $request->input('program_code'), //default to old value if not provided
+                'program_name' => $request->input('program_name'), //default to old value if not provided
+                'num_years' => $request->input('num_years'), //default to old value if not provided
+                'program_type' => $request->input('program_type'), //default to old value if not provided
                 'active_status' => $request->input('active_status', $program->active_status), //default to old value if not provided
             ]);
     
