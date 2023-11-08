@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CollegeController;
+use App\Http\Controllers\Api\EnrollmentFeeController;
 use App\Http\Controllers\Api\SampleController;
 
 /*
@@ -19,7 +20,7 @@ use App\Http\Controllers\Api\SampleController;
 /*
  * Exposed API endpoints go here
  */
-Route::group(['middlware'=>['cors', 'json.response']], function() {
+Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::get('/sample-route', [SampleController::class, 'sampleRoute']);
 });
 
