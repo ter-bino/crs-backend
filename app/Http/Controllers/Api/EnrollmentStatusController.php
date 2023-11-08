@@ -43,7 +43,7 @@ class EnrollmentStatusController extends Controller
         $enrollmentStatus->enrollment_status_name = $request->input('enrollment_status_name');
         $enrollmentStatus->save();
 
-        return response()->json($enrollmentStatus, 201); // Respond with the newly created college and a 201 status code.
+        return response()->json($enrollmentStatus, 201);
     }
 
     /**
