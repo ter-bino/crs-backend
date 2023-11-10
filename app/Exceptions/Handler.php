@@ -53,6 +53,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Role not found',
                 ], 404);
+            } else if($request->is('api/instruction-language/*')) {
+                return response()->json([
+                    'message' => 'Instruction language not found',
+                ], 404);
             } 
         });
     }
