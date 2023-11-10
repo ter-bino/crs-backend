@@ -4,9 +4,11 @@ use App\Http\Controllers\Api\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CollegeController;
 use App\Http\Controllers\Api\EnrollmentFeeController;
+use App\Http\Controllers\Api\InstructionLanguageController;
 use App\Http\Controllers\Api\SampleController;
 use App\Http\Controllers\Api\ProgramController;
 use App\Http\Controllers\Api\RoleController;
+use App\Models\InstructionLanguage;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('enrollment-status', EnrollmentStatusController::class);
     Route::apiResource('address', AddressController::class);
     Route::apiResource('role', RoleController::class);
+    Route::apiResource('instruction-language', InstructionLanguageController::class);
 });
 
 /*
