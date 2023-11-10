@@ -57,6 +57,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Instruction language not found',
                 ], 404);
+            } else if($request->is('api/meeting-type/*')) {
+                return response()->json([
+                    'message' => 'Meeting Type not found',
+                ], 404);
             } 
         });
     }
