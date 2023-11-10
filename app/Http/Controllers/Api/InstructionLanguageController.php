@@ -85,9 +85,9 @@ class InstructionLanguageController extends Controller
     {
         if ($instructionLanguage) {
             $instructionLanguage->delete();
-            return response()->json(['message' => 'College deleted']);
+            return response()->json(['message' => 'Instruction Language deleted']);
         } else {
-            return response()->json(['message' => 'College not found'], 404);
+            return response()->json(['message' => 'Instruction Language not found'], 404);
         }
     }
 }
