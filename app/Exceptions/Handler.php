@@ -49,7 +49,11 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Address not found',
                 ], 404);
-            }
+            } else if($request->is('api/role/*')) {
+                return response()->json([
+                    'message' => 'Role not found',
+                ], 404);
+            } 
         });
     }
 }
