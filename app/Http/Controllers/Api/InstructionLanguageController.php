@@ -65,7 +65,7 @@ class InstructionLanguageController extends Controller
     {
         if ($instructionLanguage) {
             $request->validate([
-                'language' => 'required|unique:instruction_language'
+                'language' => 'required|unique:instruction_language' . $instructionLanguage->instruction_language_id .',instruction_language_id', // Validate uniqueness, but ignore the current data
             ]);
     
             $instructionLanguage->update([
