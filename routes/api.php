@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CollegeController;
 use App\Http\Controllers\Api\EnrollmentFeeController;
 use App\Http\Controllers\Api\InstructionLanguageController;
 use App\Http\Controllers\Api\MeetingTypeController;
+use App\Http\Controllers\Api\PaymentTransactionController;
 use App\Http\Controllers\Api\SampleController;
 use App\Http\Controllers\Api\ProgramController;
 use App\Http\Controllers\Api\RoleController;
@@ -37,6 +38,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('instruction-language', InstructionLanguageController::class);
     Route::apiResource('meeting-type', MeetingTypeController::class);
     Route::apiResource('student-balance', StudentBalanceController::class);
+    Route::apiResource('payment-transaction', PaymentTransactionController::class);
 });
 
 /*
