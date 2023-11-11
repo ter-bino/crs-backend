@@ -61,7 +61,11 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Meeting Type not found',
                 ], 404);
-            } 
+            } else if($request->is('api/student-balance/*')) {
+                return response()->json([
+                    'message' => 'Student balance not found',
+                ], 404);
+            }
         });
     }
 }
