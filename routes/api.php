@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\MeetingTypeController;
 use App\Http\Controllers\Api\SampleController;
 use App\Http\Controllers\Api\ProgramController;
 use App\Http\Controllers\Api\RoleController;
+use App\Http\Controllers\Api\StudentBalanceController;
 use App\Models\InstructionLanguage;
 
 /*
@@ -35,6 +36,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('role', RoleController::class);
     Route::apiResource('instruction-language', InstructionLanguageController::class);
     Route::apiResource('meeting-type', MeetingTypeController::class);
+    Route::apiResource('student-balance', StudentBalanceController::class);
 });
 
 /*
