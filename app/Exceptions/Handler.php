@@ -69,7 +69,11 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Payment Transaction not found',
                 ], 404);
-            }
+            } else if($request->is('api/student/*')) {
+                return response()->json([
+                    'message' => 'Student not found',
+                ], 404);
+            } 
         });
     }
 }
