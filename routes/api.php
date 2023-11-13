@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\SampleController;
 use App\Http\Controllers\Api\ProgramController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\StudentBalanceController;
+use App\Http\Controllers\Api\StudentController;
 use App\Models\InstructionLanguage;
 
 /*
@@ -39,6 +40,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('meeting-type', MeetingTypeController::class);
     Route::apiResource('student-balance', StudentBalanceController::class);
     Route::apiResource('payment-transaction', PaymentTransactionController::class);
+    Route::apiResource('student', StudentController::class);
 });
 
 /*
