@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -100,7 +101,7 @@ class StaffController extends Controller
             $request->validate([
                 'user_account_id' => 'required|exists:user_account,user_account_id|integer',
                 'address_id' => 'required|exists:address, address_id|integer',
-                'employee_number' => 'required|string',
+                'employee_number' => 'required|unique:employee,' . $staff->staff_id .',staff_id',
                 'designation' => 'required|string',
                 'first_name' => 'required|string',
                 'last_name' => 'required|string',
@@ -112,10 +113,10 @@ class StaffController extends Controller
                 'citizenship' => 'required|string',
                 'birth_date' => 'required|date',
                 'birth_place' => 'required|string',
-                'contact_no' => 'required|string',
-                'personal_email' => 'required|string',
-                'TIN_no' => 'required|string',
-                'GSIS_no' => 'required|string',
+                'contact_no' => 'required|unique:employee,' . $staff->staff_id .',staff_id',
+                'personal_email' => 'required|unique:employee,' . $staff->staff_id .',staff_id',
+                'TIN_no' => 'required|unique:employee,' . $staff->staff_id .',staff_id',
+                'GSIS_no' => 'required|unique:employee,' . $staff->staff_id .',staff_id',
             ]);
     
             $staff->update([
