@@ -70,7 +70,7 @@ class DepartmentController extends Controller
         if ($department) {
             $request->validate([
                 'program_id' => 'required|exists:program,program_id|integer',
-                'department_code' => 'required|unique:department',
+                'department_code' => 'required|unique:department,' . $department->department_id .',department_id',
                 'department_name' => 'required|string'
             ]);
     
