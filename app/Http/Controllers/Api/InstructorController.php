@@ -71,7 +71,7 @@ class InstructorController extends Controller
     {
         if ($instructor) {
             $request->validate([
-                'staff_id' => 'required|exists:staff,staff_id,' . $instructor->instructor_id .',instructor_id',
+                'staff_id' => 'required|exists:staff,staff_id|integer',
                 'instructor_code' => 'required|unique:instructor' . $instructor->instructor_id .',instructor_id',
                 'teaching_position' => 'required|string',
                 'employment_type' => 'required|string'
