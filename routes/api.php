@@ -51,6 +51,27 @@ Route::group(['middleware'=>['json.response']], function() {
 /*
  * Protected API endpoints go here
  */
-Route::middleware('auth:api')->group(function () {
-    //not working for now
+Route::group(['middleware'=>['json.response','api.auth']], function () {
+    Route::get('sample-route', [SampleController::class, 'sampleRoute']);
+    Route::group(['middleware'=>['api.auth:admin']], function() {
+        //admin usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:college_admin']], function() {
+        //college admin usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:department_admin']], function() {
+        //department admin usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:program_admin']], function() {
+        //program admin usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:faculty']], function() {
+        //faculty usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:cashier']], function() {
+        //cashier usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:student']], function() {
+        //student usable endpoints here
+    });
 });
