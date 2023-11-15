@@ -68,7 +68,7 @@ class MeetingTypeController extends Controller
     {
         if ($meetingType) {
             $request->validate([
-                'meeting_type_code' => 'required|unique:meeting_type',
+                'meeting_type_code' => 'required|unique:meeting_type,' . $meetingType->meeting_type_id .',meeting_type_id',
                 'label' => 'required|string',
                 'active_status' => 'boolean'
             ]);
