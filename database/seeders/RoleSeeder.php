@@ -18,6 +18,8 @@ class RoleSeeder extends Seeder
             'COLLEGE_ADMIN',
             'DEPARTMENT_ADMIN',
             'PROGRAM_ADMIN',
+            'FACULTY',
+            'CASHIER',
             'STUDENT',
         );
 
