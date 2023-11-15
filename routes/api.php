@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AddressController;
+use App\Http\Controllers\Api\ClassController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CollegeController;
 use App\Http\Controllers\Api\EnrollmentFeeController;
@@ -47,6 +48,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('department', DepartmentController::class);
     Route::apiResource('instructor', InstructorController::class);
     Route::apiResource('teaching-assignment', TeachingAssignmentController::class);
+    Route::apiResource('class', ClassController::class);
 });
 
 /*
