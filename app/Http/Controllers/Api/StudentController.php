@@ -98,7 +98,7 @@ class StudentController extends Controller
             $request->validate([
                 'user_account_id' => 'required|exists:user_account,user_account_id|integer',
                 'address_id' => 'required|exists:address,address_id|integer',
-                'student_no' => 'required|unique:student|string',
+                'student_no' => 'required|unique:student,' . $student->student_id .',student_id',
                 'entry_academic_year' => 'required|string',
                 'first_name' => 'required|string',
                 'last_name' => 'required|string',
@@ -110,8 +110,8 @@ class StudentController extends Controller
                 'citizenship' => 'required|string',
                 'birth_date' => 'required|date',
                 'birth_place' => 'required|string',
-                'contact_no' => 'required|unique:student|string',
-                'personal_email' => 'required|unique:student|string',
+                'contact_no' => 'required|unique:student,' . $student->student_id .',student_id',
+                'personal_email' => 'required|unique:student,' . $student->student_id .',student_id',
             ]);
     
             $student->update([
