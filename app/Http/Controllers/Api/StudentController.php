@@ -37,6 +37,8 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'user_account_id' => 'required|exists:user_account,user_account_id|integer',
+            'address_id' => 'required|exists:address,address_id|integer',
             'student_no' => 'required|unique:student|string',
             'entry_academic_year' => 'required|string',
             'first_name' => 'required|string',
@@ -54,6 +56,8 @@ class StudentController extends Controller
         ]);
 
         $student = new Student;
+        $student->user_account_id = $request->input('user_account_id');
+        $student->address_id = $request->input('address_id');
         $student->student_no = $request->input('student_no');
         $student->entry_academic_year = $request->input('entry_academic_year');
         $student->first_name = $request->input('first_name');
@@ -92,6 +96,8 @@ class StudentController extends Controller
     {
         if ($student) {
             $request->validate([
+                'user_account_id' => 'required|exists:user_account,user_account_id|integer',
+                'address_id' => 'required|exists:address,address_id|integer',
                 'student_no' => 'required|unique:student|string',
                 'entry_academic_year' => 'required|string',
                 'first_name' => 'required|string',
@@ -109,6 +115,8 @@ class StudentController extends Controller
             ]);
     
             $student->update([
+                'user_account_id' => $request->input('user_account_id'),
+                'address_id' => $request->input('address_id'),
                 'student_no' => $request->input('student_no'),
                 'entry_academic_year' => $request->input('entry_academic_year'),
                 'first_name' => $request->input('first_name'),
