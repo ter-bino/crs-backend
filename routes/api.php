@@ -42,6 +42,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('payment-transaction', PaymentTransactionController::class);
     Route::apiResource('student', StudentController::class);
     Route::apiResource('block', BlockController::class);
+    Route::apiResource('staff', StaffController::class);
 });
 
 /*
