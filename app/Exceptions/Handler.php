@@ -89,6 +89,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Instructor not found',
                 ], 404);
+            } else if($request->is('api/teaching-assignment/*')) {
+                return response()->json([
+                    'message' => 'Teaching assignment not found',
+                ], 404);
             } 
         });
     }
