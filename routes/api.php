@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\ProgramController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\StudentBalanceController;
 use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\TeachingAssignmentController;
 use App\Models\InstructionLanguage;
 
 /*
@@ -45,6 +46,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('staff', StaffController::class);
     Route::apiResource('department', DepartmentController::class);
     Route::apiResource('instructor', InstructorController::class);
+    Route::apiResource('teaching-assignment', TeachingAssignmentController::class);
 });
 
 /*
