@@ -43,6 +43,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('student', StudentController::class);
     Route::apiResource('block', BlockController::class);
     Route::apiResource('staff', StaffController::class);
+    Route::apiResource('department', DepartmentController::class);
 });
 
 /*
