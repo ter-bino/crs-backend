@@ -12,6 +12,9 @@ use App\Http\Controllers\Api\ProgramController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\StudentBalanceController;
 use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\EnrollmentStatusController;
+use App\Http\Controllers\Api\BlockController;
+use App\Http\Controllers\Api\AuthController;
 use App\Models\InstructionLanguage;
 
 /*
@@ -28,8 +31,9 @@ use App\Models\InstructionLanguage;
 /*
  * Exposed API endpoints go here
  */
-Route::group(['middleware'=>['cors', 'json.response']], function() {
-    Route::get('/sample-route', [SampleController::class, 'sampleRoute']);
+Route::group(['middleware'=>['json.response']], function() {
+    Route::get('sample-route', [SampleController::class, 'sampleRoute']);
+    Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::apiResource('enrollment-fees', EnrollmentFeeController::class);
     Route::apiResource('colleges', CollegeController::class);
     Route::apiResource('programs', ProgramController::class);
