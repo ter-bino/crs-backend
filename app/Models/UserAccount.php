@@ -39,9 +39,9 @@ class UserAccount extends Model
         return $this->hasOne(Staff::class, 'user_account_id', 'user_account_id');
     }
 
-    public function sessions(): HasMany
+    public function tokens(): HasMany
     {
-        return $this->hasMany(UserSession::class, 'user_account_id', 'user_account_id');
+        return $this->hasMany(UserToken::class, 'user_account_id', 'user_account_id');
     }
 
     public function roles(): BelongsToMany
