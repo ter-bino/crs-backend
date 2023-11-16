@@ -36,7 +36,7 @@ class ClassController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'subject_id' => 'required|exists:subject,subject_id|string',
+            'subject_id' => 'required|exists:subject,subject_id|integer',
             'academic_year' => 'required|string',
             'term' => 'required|integer',
             'minimum_year_level' => 'required|integer',
