@@ -36,7 +36,7 @@ class TeachingAssignmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'instructor_id' => 'required|exists:instructor,instructor_id|string',
+            'instructor_id' => 'required|exists:instructor,instructor_id|integer',
             'academic_year' => 'required|string',
             'term' => 'required|integer',
             'start_date' => 'required',
@@ -71,7 +71,7 @@ class TeachingAssignmentController extends Controller
     {
         if ($teachingAssignment) {
             $request->validate([
-                'instructor_id' => 'required|exists:instructor,instructor_id|string',
+                'instructor_id' => 'required|exists:instructor,instructor_id|integer',
                 'academic_year' => 'required|string',
                 'term' => 'required|integer',
                 'start_date' => 'required',
