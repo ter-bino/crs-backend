@@ -125,6 +125,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Activity Type not found',
                 ], 404);
+            } else if($request->is('api/sub-activity/*')) {
+                return response()->json([
+                    'message' => 'Sub Activity not found',
+                ], 404);
             } 
         });
     }
