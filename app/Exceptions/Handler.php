@@ -109,6 +109,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Consultation Hour not found',
                 ], 404);
+            } else if($request->is('api/load-type/*')) {
+                return response()->json([
+                    'message' => 'Load Type not found',
+                ], 404);
             } 
         });
     }
