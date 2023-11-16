@@ -37,6 +37,7 @@ class ClassController extends Controller
     {
         $request->validate([
             'subject_id' => 'required|exists:subject,subject_id|integer',
+            'instruction_language_id' => 'required|exists:instruction_language,instruction_language_id|integer',
             'academic_year' => 'required|string',
             'term' => 'required|integer',
             'minimum_year_level' => 'required|integer',
@@ -49,6 +50,7 @@ class ClassController extends Controller
 
         $class = new M_Class();
         $class->subject_id = $request->input('subject_id');
+        $class->instruction_language_id = $request->input('instruction_language_id');
         $class->academic_year = $request->input('academic_year');
         $class->term = $request->input('term');
         $class->minimum_year_level = $request->input('minimum_year_level');
@@ -82,6 +84,7 @@ class ClassController extends Controller
         if ($class) {
             $request->validate([
                 'subject_id' => 'required|exists:subject,subject_id|integer',
+                'instruction_language_id' => 'required|exists:instruction_language,instruction_language_id|integer',
                 'academic_year' => 'required|string',
                 'term' => 'required|integer',
                 'minimum_year_level' => 'required|integer',
@@ -94,6 +97,7 @@ class ClassController extends Controller
     
             $class->update([
                 'subject_id' => $request->input('subject_id'),
+                'instruction_language_id' => $request->input('instruction_langauge_id'),
                 'academic_year' => $request->input('academic_year'),
                 'term' => $request->input('term'),
                 'minimum_year_level' => $request->input('minimum_year_level'),
