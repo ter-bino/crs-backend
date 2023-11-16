@@ -53,6 +53,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('schedule', ScheduleController::class);
     Route::apiResource('room', RoomController::class);
     Route::apiResource('consultation-hour', ConsultationHourController::class);
+    Route::apiResource('load-type', LoadTypeController::class);
 });
 
 /*
