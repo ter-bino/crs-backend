@@ -37,7 +37,6 @@ class TeachingAssignmentController extends Controller
     {
         $request->validate([
             'instructor_id' => 'required|exists:instructor,instructor_id|string',
-            'consultation_hour_id' => 'required|exists:consultation_hour,consultation_hour_id|string',
             'academic_year' => 'required|string',
             'term' => 'required|integer',
             'start_date' => 'required',
@@ -45,7 +44,6 @@ class TeachingAssignmentController extends Controller
 
         $teachingAssignment = new TeachingAssignment;
         $teachingAssignment->instructor_id = $request->input('instructor_id');
-        $teachingAssignment->consultation_hour_id = $request->input('consultation_hour_id');
         $teachingAssignment->academic_year = $request->input('academic_year');
         $teachingAssignment->term = $request->input('term');
         $teachingAssignment->start_date = $request->input('start_date');
@@ -74,7 +72,6 @@ class TeachingAssignmentController extends Controller
         if ($teachingAssignment) {
             $request->validate([
                 'instructor_id' => 'required|exists:instructor,instructor_id|string',
-                'consultation_hour_id' => 'required|exists:consultation_hour,consultation_hour_id|string',
                 'academic_year' => 'required|string',
                 'term' => 'required|integer',
                 'start_date' => 'required',
@@ -82,7 +79,6 @@ class TeachingAssignmentController extends Controller
     
             $teachingAssignment->update([
                 'instructor_id' => $request->input('instructor_id'),
-                'consultation_hour_id' => $request->input('consultation_hour_id'),
                 'academic_year' => $request->input('academic_year'),
                 'term' => $request->input('term'),
                 'start_date' => $request->input('start_date'),
