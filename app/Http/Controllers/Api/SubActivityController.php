@@ -49,7 +49,7 @@ class SubActivityController extends Controller
         $subActivity->end_date = $request->input('end_date');
         $subActivity->save();
 
-        return response()->json($college, 201);
+        return response()->json($subActivity, 201);
     }
 
     /**
