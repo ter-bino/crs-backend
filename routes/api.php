@@ -49,6 +49,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('instructor', InstructorController::class);
     Route::apiResource('teaching-assignment', TeachingAssignmentController::class);
     Route::apiResource('class', ClassController::class);
+    Route::apiResource('schedule', ScheduleController::class);
 });
 
 /*

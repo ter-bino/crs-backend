@@ -97,6 +97,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Class not found',
                 ], 404);
+            } else if($request->is('api/schedule/*')) {
+                return response()->json([
+                    'message' => 'Schedule not found',
+                ], 404);
             } 
         });
     }
