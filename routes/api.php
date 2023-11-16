@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\ClassController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CollegeController;
+use App\Http\Controllers\Api\ConsultationHourController;
 use App\Http\Controllers\Api\EnrollmentFeeController;
 use App\Http\Controllers\Api\InstructionLanguageController;
 use App\Http\Controllers\Api\MeetingTypeController;
@@ -51,6 +52,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('class', ClassController::class);
     Route::apiResource('schedule', ScheduleController::class);
     Route::apiResource('room', RoomController::class);
+    Route::apiResource('consultation-hour', ConsultationHourController::class);
 });
 
 /*
