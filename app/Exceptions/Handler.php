@@ -121,6 +121,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Building not found',
                 ], 404);
+            } else if($request->is('api/activity-type/*')) {
+                return response()->json([
+                    'message' => 'Activity Type not found',
+                ], 404);
             } 
         });
     }
