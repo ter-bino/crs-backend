@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ActivityTypeController;
+use App\Http\Controllers\Api\AddDropRequestController;
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\BuildingController;
 use App\Http\Controllers\Api\ClassController;
@@ -60,6 +61,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('building', BuildingController::class);
     Route::apiResource('activity-type', ActivityTypeController::class);
     Route::apiResource('sub-activity', SubActivityController::class);
+    Route::apiResource('add-drop-request', AddDropRequestController::class);
 });
 
 /*
