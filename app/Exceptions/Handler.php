@@ -117,6 +117,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Subject not found',
                 ], 404);
+            } else if($request->is('api/building/*')) {
+                return response()->json([
+                    'message' => 'Building not found',
+                ], 404);
             } 
         });
     }
