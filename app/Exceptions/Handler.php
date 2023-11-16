@@ -113,6 +113,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Load Type not found',
                 ], 404);
+            } else if($request->is('api/subject/*')) {
+                return response()->json([
+                    'message' => 'Subject not found',
+                ], 404);
             } 
         });
     }
