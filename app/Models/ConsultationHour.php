@@ -18,7 +18,6 @@ class ConsultationHour extends Model
         'day',
         'start_time',
         'end_time',
-        'total_hours'
     ];
 
     public function teaching_assignment(): BelongsTo
