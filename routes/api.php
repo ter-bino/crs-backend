@@ -59,6 +59,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('subject', SubjectController::class);
     Route::apiResource('building', BuildingController::class);
     Route::apiResource('activity-type', ActivityTypeController::class);
+    Route::apiResource('sub-activity', SubActivityController::class);
 });
 
 /*
