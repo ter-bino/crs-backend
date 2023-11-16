@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_sessions', function (Blueprint $table) {
+        Schema::create('user_session', function (Blueprint $table) {
             $table->id('user_session_id');
             $table->foreignId('user_account_id')->constrained('user_account', 'user_account_id');
             $table->string('user_session_token');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_sessions');
+        Schema::dropIfExists('user_session');
     }
 };
