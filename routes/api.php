@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ActivityTypeController;
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\BuildingController;
 use App\Http\Controllers\Api\ClassController;
@@ -57,6 +58,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('load-type', LoadTypeController::class);
     Route::apiResource('subject', SubjectController::class);
     Route::apiResource('building', BuildingController::class);
+    Route::apiResource('activity-type', ActivityTypeController::class);
 });
 
 /*
