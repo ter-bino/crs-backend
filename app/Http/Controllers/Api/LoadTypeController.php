@@ -68,7 +68,7 @@ class LoadTypeController extends Controller
     {
         if ($loadType) {
             $request->validate([
-                'load_type_code' => 'required|unique:load_type|string',
+                'load_type_code' => 'required|unique:load_type,' . $loadType->load_type_id .',load_type_id',
                 'load_type_name' => 'required|string'
             ]);
     
