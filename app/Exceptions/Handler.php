@@ -129,6 +129,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Sub Activity not found',
                 ], 404);
+            } else if($request->is('api/add-drop-request/*')) {
+                return response()->json([
+                    'message' => 'Add Drop Request not found',
+                ], 404);
             } 
         });
     }
