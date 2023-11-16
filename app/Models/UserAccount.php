@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class UserAccount extends Model
@@ -36,6 +37,11 @@ class UserAccount extends Model
     public function staff(): HasOne
     {
         return $this->hasOne(Staff::class, 'user_account_id', 'user_account_id');
+    }
+
+    public function sessions(): HasMany
+    {
+        return $this->hasMany(UserSession::class, 'user_account_id', 'user_account_id');
     }
 
     public function roles(): BelongsToMany
