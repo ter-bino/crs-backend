@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AddressController;
+use App\Http\Controllers\Api\BuildingController;
 use App\Http\Controllers\Api\ClassController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CollegeController;
@@ -55,6 +56,7 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('consultation-hour', ConsultationHourController::class);
     Route::apiResource('load-type', LoadTypeController::class);
     Route::apiResource('subject', SubjectController::class);
+    Route::apiResource('building', BuildingController::class);
 });
 
 /*
