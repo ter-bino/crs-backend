@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\UserAccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ActivityTypeController;
@@ -79,6 +80,7 @@ Route::group(['middleware'=>['json.response','api.auth']], function () {
     Route::apiResource('activity-types', ActivityTypeController::class);
     Route::apiResource('sub-activities', SubActivityController::class);
     Route::apiResource('add-drop-requests', AddDropRequestController::class);
+    Route::apiResource('user-accounts', UserAccountController::class);
 
     Route::group(['middleware'=>['api.auth:admin']], function() {
         //admin usable endpoints here
