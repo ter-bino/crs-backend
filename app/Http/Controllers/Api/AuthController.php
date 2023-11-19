@@ -49,8 +49,8 @@ class AuthController extends Controller
             'CRS-API-SESSION-TOKEN',
             $userToken->user_session_token,
             60
-        );
-
+        )->withSameSite('None')->withSecure(true);
+        
         return response()->json([
             'message' => 'Successful login',
             'user' => $user->plm_email_address,
