@@ -19,7 +19,6 @@ class UserAccount extends Model
 
     protected $fillable = [
         'plm_email_address',
-        'user_password',
         'account_expiry_date',
         'active_status'
     ];
