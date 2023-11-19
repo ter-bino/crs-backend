@@ -79,25 +79,28 @@ Route::group(['middleware'=>['json.response','api.auth']], function () {
     Route::apiResource('activity-types', ActivityTypeController::class);
     Route::apiResource('sub-activities', SubActivityController::class);
     Route::apiResource('add-drop-requests', AddDropRequestController::class);
+
     Route::group(['middleware'=>['api.auth:admin']], function() {
         //admin usable endpoints here
     });
-    Route::group(['middleware'=>['api.auth:college_admin']], function() {
+
+    Route::group(['middleware'=>['api.auth:faculty']], function() {
+        //faculty admin usable endpoints here
+    });
+
+    Route::group(['middleware'=>['api.auth:college']], function() {
         //college admin usable endpoints here
     });
-    Route::group(['middleware'=>['api.auth:department_admin']], function() {
-        //department admin usable endpoints here
+
+    Route::group(['middleware'=>['api.auth:student_undergraduate']], function() {
+        //student_undergraduate usable endpoints here
     });
-    Route::group(['middleware'=>['api.auth:program_admin']], function() {
-        //program admin usable endpoints here
+
+    Route::group(['middleware'=>['api.auth:student_graduate']], function() {
+        //student_graduate usable endpoints here
     });
-    Route::group(['middleware'=>['api.auth:faculty']], function() {
-        //faculty usable endpoints here
-    });
+    
     Route::group(['middleware'=>['api.auth:cashier']], function() {
         //cashier usable endpoints here
-    });
-    Route::group(['middleware'=>['api.auth:student']], function() {
-        //student usable endpoints here
     });
 });

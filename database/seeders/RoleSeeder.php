@@ -15,12 +15,11 @@ class RoleSeeder extends Seeder
     {
         $roles = array(
             'ADMIN',
-            'COLLEGE_ADMIN',
-            'DEPARTMENT_ADMIN',
-            'PROGRAM_ADMIN',
             'FACULTY',
+            'COLLEGE',
+            'STUDENT_UNDERGRADUATE',
+            'STUDENT_GRADUATE',
             'CASHIER',
-            'STUDENT',
         );
 
         foreach($roles as $role) {
