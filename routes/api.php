@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ActivityTypeController;
 use App\Http\Controllers\Api\AddDropRequestController;
 use App\Http\Controllers\Api\AddressController;
@@ -14,7 +16,6 @@ use App\Http\Controllers\Api\ScheduleController;
 use App\Http\Controllers\Api\StaffController;
 use App\Http\Controllers\Api\SubActivityController;
 use App\Http\Controllers\Api\SubjectController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CollegeController;
 use App\Http\Controllers\Api\ConsultationHourController;
 use App\Http\Controllers\Api\EnrollmentFeeController;
@@ -28,7 +29,6 @@ use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\StudentBalanceController;
 use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\TeachingAssignmentController;
-use App\Models\InstructionLanguage;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,8 +44,15 @@ use App\Models\InstructionLanguage;
 /*
  * Exposed API endpoints go here
  */
-Route::group(['middleware'=>['cors', 'json.response']], function() {
-    Route::get('/sample-route', [SampleController::class, 'sampleRoute']);
+Route::group(['middleware'=>['json.response']], function() {
+    Route::get('sample-route', [SampleController::class, 'sampleRoute']);
+    Route::post('login', [AuthController::class, 'login'])->name('login');
+});
+
+/*
+ * Protected API endpoints go here
+ */
+Route::group(['middleware'=>['json.response','api.auth']], function () {
     Route::apiResource('enrollment-fees', EnrollmentFeeController::class);
     Route::apiResource('colleges', CollegeController::class);
     Route::apiResource('programs', ProgramController::class);
@@ -72,11 +79,25 @@ Route::group(['middleware'=>['cors', 'json.response']], function() {
     Route::apiResource('activity-types', ActivityTypeController::class);
     Route::apiResource('sub-activities', SubActivityController::class);
     Route::apiResource('add-drop-requests', AddDropRequestController::class);
-});
-
-/*
- * Protected API endpoints go here
- */
-Route::middleware('auth:api')->group(function () {
-    //not working for now
+    Route::group(['middleware'=>['api.auth:admin']], function() {
+        //admin usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:college_admin']], function() {
+        //college admin usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:department_admin']], function() {
+        //department admin usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:program_admin']], function() {
+        //program admin usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:faculty']], function() {
+        //faculty usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:cashier']], function() {
+        //cashier usable endpoints here
+    });
+    Route::group(['middleware'=>['api.auth:student']], function() {
+        //student usable endpoints here
+    });
 });
