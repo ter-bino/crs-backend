@@ -47,6 +47,12 @@ use App\Http\Controllers\Api\TeachingAssignmentController;
 Route::group(['middleware'=>['json.response']], function() {
     Route::get('sample-route', [SampleController::class, 'sampleRoute']);
     Route::post('login', [AuthController::class, 'login'])->name('login');
+});
+
+/*
+ * Protected API endpoints go here
+ */
+Route::group(['middleware'=>['json.response','api.auth']], function () {
     Route::apiResource('enrollment-fees', EnrollmentFeeController::class);
     Route::apiResource('colleges', CollegeController::class);
     Route::apiResource('programs', ProgramController::class);
@@ -73,13 +79,6 @@ Route::group(['middleware'=>['json.response']], function() {
     Route::apiResource('activity-types', ActivityTypeController::class);
     Route::apiResource('sub-activities', SubActivityController::class);
     Route::apiResource('add-drop-requests', AddDropRequestController::class);
-});
-
-/*
- * Protected API endpoints go here
- */
-Route::group(['middleware'=>['json.response','api.auth']], function () {
-    Route::get('sample-route', [SampleController::class, 'sampleRoute']);
     Route::group(['middleware'=>['api.auth:admin']], function() {
         //admin usable endpoints here
     });
