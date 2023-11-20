@@ -71,7 +71,11 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'Successful logout'
-        ])->withCookie(Cookie::forget('CRS-API-SESSION-TOKEN'));
+        ])->withCookie(
+            Cookie::forget('CRS-API-SESSION-TOKEN')
+                ->withSameSite('None')
+                ->withSecure(true)
+        );
     }
 
     protected function getMicrosoftUser($accessToken)
