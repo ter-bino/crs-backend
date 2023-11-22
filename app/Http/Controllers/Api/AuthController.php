@@ -78,6 +78,37 @@ class AuthController extends Controller
         );
     }
 
+    public function me() {
+        $sessionToken = Cookie::get('CRS-API-SESSION-TOKEN');
+
+        if($sessionToken) {
+            $userToken = UserToken::where('user_session_token', $sessionToken)->first();
+
+            if($userToken) {
+                $user = $userToken->userAccount;
+
+                $roles = $user->roles->map(function ($role) {
+                    return [
+                        'id' => $role->role_id,
+                        'name' => $role->role_name,
+                    ];
+                })->toArray();
+
+                return response()->json([
+                    'message' => 'You are logged in as ' . $user->plm_email_address . '.',
+                    'user' => $user->plm_email_address,
+                    'staff_info' => $user->staff,
+                    'student_info' => $user->student,
+                    'roles' => $roles,
+                ]);
+            }
+        }
+
+        return response()->json([
+            'message' => 'You\'re not logged in.'
+        ], 401);
+    }
+
     protected function getMicrosoftUser($accessToken)
     {
         return Socialite::driver('azure')->userFromToken($accessToken);
