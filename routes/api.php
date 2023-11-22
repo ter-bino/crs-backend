@@ -54,6 +54,8 @@ Route::group(['middleware'=>['json.response']], function() {
  * Protected API endpoints go here
  */
 Route::group(['middleware'=>['json.response','api.auth']], function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+
     Route::apiResource('enrollment-fees', EnrollmentFeeController::class);
     Route::apiResource('colleges', CollegeController::class);
     Route::apiResource('programs', ProgramController::class);

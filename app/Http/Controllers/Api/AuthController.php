@@ -58,6 +58,26 @@ class AuthController extends Controller
         ])->cookie($cookie);
     }
 
+    public function logout() {
+        $sessionToken = Cookie::get('CRS-API-SESSION-TOKEN');
+
+        if($sessionToken) {
+            $userToken = UserToken::where('user_session_token', $sessionToken)->first();
+
+            if($userToken) {
+                $userToken->delete();
+            }
+        }
+
+        return response()->json([
+            'message' => 'Successful logout'
+        ])->withCookie(
+            Cookie::forget('CRS-API-SESSION-TOKEN')
+                ->withSameSite('None')
+                ->withSecure(true)
+        );
+    }
+
     protected function getMicrosoftUser($accessToken)
     {
         return Socialite::driver('azure')->userFromToken($accessToken);
