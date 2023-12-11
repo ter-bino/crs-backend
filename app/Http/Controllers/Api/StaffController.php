@@ -38,7 +38,7 @@ class StaffController extends Controller
         $request->validate([
             'user_account_id' => 'required|exists:user_account,user_account_id|integer',
             'address_id' => 'required|exists:address, address_id|integer',
-            'employee_number' => 'required|string',
+            'employee_number' => 'required|string|unique:staff',
             'designation' => 'required|string',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
@@ -50,10 +50,10 @@ class StaffController extends Controller
             'citizenship' => 'required|string',
             'birth_date' => 'required|date',
             'birth_place' => 'required|string',
-            'contact_no' => 'required|string',
-            'personal_email' => 'required|string',
-            'TIN_no' => 'required|string',
-            'GSIS_no' => 'required|string',
+            'contact_no' => 'required|string|unique:staff',
+            'personal_email' => 'required|string|unique:staff',
+            'TIN_no' => 'required|string|unique:staff',
+            'GSIS_no' => 'required|string|unique:staff',
         ]);
 
         $staff = new Staff;
