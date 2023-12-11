@@ -37,7 +37,7 @@ class StudentBalanceController extends Controller
     {
         $request->validate([
             'student_id' => 'required|exists:student,student_id|integer',
-            'terms_of_payment' => 'required|sring',
+            'terms_of_payment' => 'required|string',
             'assessment_type' => 'required|string',
             'academic_year' => 'required|string',
             'term' => 'required|integer',
