@@ -25,6 +25,10 @@ class ActivityController extends Controller
             foreach ($fillableColumns as $column) {
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
+
+            $query->orWhereHas('activityType', function ($subQuery) use ($search) {
+                $subQuery->where('activity_type_name', 'like', '%' . $search . '%');
+            });
         })
         ->paginate($perPage, ['*'], 'page', $page);
 
