@@ -141,6 +141,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'Activity not found',
                 ], 404);
+            } else if($request->is('api/student-terms/*')) {
+                return response()->json([
+                    'message' => 'Student Term not found',
+                ], 404);
             } else {
                 return response()->json([
                     'message' => 'Resource not found',
