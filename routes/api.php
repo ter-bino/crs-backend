@@ -30,6 +30,7 @@ use App\Http\Controllers\Api\ProgramController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\StudentBalanceController;
 use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\StudentTermController;
 use App\Http\Controllers\Api\TeachingAssignmentController;
 
 /*
@@ -86,6 +87,11 @@ Route::group(['middleware'=>['json.response','api.auth']], function () {
     Route::apiResource('subjects', SubjectController::class);
     Route::apiResource('teaching-assignments', TeachingAssignmentController::class);
     Route::apiResource('user-accounts', UserAccountController::class);
+    Route::get('student-terms', [StudentTermController::class, 'index']);
+    Route::get('student-terms/{student}/{program}/{academic_year}/{term}', [StudentTermController::class, 'show']);
+    Route::post('student-terms', [StudentTermController::class, 'store']);
+    Route::put('student-terms/{student}/{program}/{academic_year}/{term}', [StudentTermController::class, 'update']);
+    Route::delete('student-terms/{student}/{program}/{academic_year}/{term}', [StudentTermController::class, 'destroy']);
 
     Route::group(['middleware'=>['api.auth:admin']], function() {
         //admin usable endpoints here
