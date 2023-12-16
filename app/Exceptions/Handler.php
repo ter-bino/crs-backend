@@ -137,6 +137,10 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'User Account not found',
                 ], 404);
+            } else if($request->is('api/activities/*')) {
+                return response()->json([
+                    'message' => 'Activity not found',
+                ], 404);
             } else {
                 return response()->json([
                     'message' => 'Resource not found',
