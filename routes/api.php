@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ActivityController;
 use App\Http\Controllers\Api\UserAccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -57,32 +58,33 @@ Route::group(['middleware'=>['json.response','api.auth']], function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('me', [AuthController::class, 'me']);
 
-    Route::apiResource('enrollment-fees', EnrollmentFeeController::class);
-    Route::apiResource('colleges', CollegeController::class);
-    Route::apiResource('programs', ProgramController::class);
-    Route::apiResource('enrollment-statuses', EnrollmentStatusController::class);
-    Route::apiResource('addresses', AddressController::class);
-    Route::apiResource('roles', RoleController::class);
-    Route::apiResource('instruction-languages', InstructionLanguageController::class);
-    Route::apiResource('meeting-types', MeetingTypeController::class);
-    Route::apiResource('student-balances', StudentBalanceController::class);
-    Route::apiResource('payment-transactions', PaymentTransactionController::class);
-    Route::apiResource('students', StudentController::class);
-    Route::apiResource('blocks', BlockController::class);
-    Route::apiResource('staffs', StaffController::class);
-    Route::apiResource('departments', DepartmentController::class);
-    Route::apiResource('instructors', InstructorController::class);
-    Route::apiResource('teaching-assignments', TeachingAssignmentController::class);
-    Route::apiResource('classes', ClassController::class);
-    Route::apiResource('schedules', ScheduleController::class);
-    Route::apiResource('rooms', RoomController::class);
-    Route::apiResource('consultation-hours', ConsultationHourController::class);
-    Route::apiResource('load-types', LoadTypeController::class);
-    Route::apiResource('subjects', SubjectController::class);
-    Route::apiResource('buildings', BuildingController::class);
+    Route::apiResource('activities', ActivityController::class);
     Route::apiResource('activity-types', ActivityTypeController::class);
-    Route::apiResource('sub-activities', SubActivityController::class);
     Route::apiResource('add-drop-requests', AddDropRequestController::class);
+    Route::apiResource('addresses', AddressController::class);
+    Route::apiResource('blocks', BlockController::class);
+    Route::apiResource('buildings', BuildingController::class);
+    Route::apiResource('classes', ClassController::class);
+    Route::apiResource('colleges', CollegeController::class);
+    Route::apiResource('consultation-hours', ConsultationHourController::class);
+    Route::apiResource('departments', DepartmentController::class);
+    Route::apiResource('enrollment-fees', EnrollmentFeeController::class);
+    Route::apiResource('enrollment-statuses', EnrollmentStatusController::class);
+    Route::apiResource('instruction-languages', InstructionLanguageController::class);
+    Route::apiResource('instructors', InstructorController::class);
+    Route::apiResource('load-types', LoadTypeController::class);
+    Route::apiResource('meeting-types', MeetingTypeController::class);
+    Route::apiResource('payment-transactions', PaymentTransactionController::class);
+    Route::apiResource('programs', ProgramController::class);
+    Route::apiResource('roles', RoleController::class);
+    Route::apiResource('rooms', RoomController::class);
+    Route::apiResource('schedules', ScheduleController::class);
+    Route::apiResource('staffs', StaffController::class);
+    Route::apiResource('student-balances', StudentBalanceController::class);
+    Route::apiResource('students', StudentController::class);
+    Route::apiResource('sub-activities', SubActivityController::class);
+    Route::apiResource('subjects', SubjectController::class);
+    Route::apiResource('teaching-assignments', TeachingAssignmentController::class);
     Route::apiResource('user-accounts', UserAccountController::class);
 
     Route::group(['middleware'=>['api.auth:admin']], function() {
