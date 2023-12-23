@@ -11,6 +11,7 @@ use App\Models\InstructionLanguage;
 use App\Models\LoadType;
 use Illuminate\Database\Seeder;
 use App\Models\MeetingType;
+use App\Models\PaymentTransaction;
 use App\Models\Student;
 use App\Models\StudentBalance;
 use Database\Factories\ActivityTypeFactory;
@@ -20,6 +21,7 @@ use Database\Factories\EnrollmentFeeFactory;
 use Database\Factories\EnrollmentStatusFactory;
 use Database\Factories\InstructionLanguageFactory;
 use Database\Factories\LoadTypeFactory;
+use Database\Factories\PaymentTransactionFactory;
 use Database\Factories\StudentBalanceFactory;
 
 class TestDataSeeder extends Seeder
@@ -92,6 +94,15 @@ class TestDataSeeder extends Seeder
             }
         }
 
-
+        $res = PaymentTransaction::all();
+        if ($res->count() < 20) {
+            $studentBalances = StudentBalance::all();
+            foreach ($studentBalances as $studentBalance) {
+                PaymentTransactionFactory::new()
+                    ->count(5)
+                    ->for($studentBalance, 'student_balance')
+                    ->create();
+            }
+        }
     }
 }
