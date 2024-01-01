@@ -26,7 +26,7 @@ class ActivityController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
 
-            $query->orWhereHas('activityType', function ($subQuery) use ($search) {
+            $query->orWhereHas('activity_type', function ($subQuery) use ($search) {
                 $subQuery->where('activity_type_name', 'like', '%' . $search . '%');
             });
         })
