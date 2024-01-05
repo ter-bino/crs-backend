@@ -16,19 +16,27 @@ class StudentBalanceController extends Controller
         $perPage = $request->input('perPage', 10); // Specify the number of items per page
         $page = $request->input('page', 1); // Specify which page to get
         $search = $request->input('search', ''); // Specify the search query
+        $includeStudentInfo = $request->input('student_info', false); // Check if 'student_info' parameter is set to true
 
         /* Search through the fillable columns for the 'search' parameter */
-        $studentBalances = StudentBalance::where(function ($query) use ($search) {
+        $query = StudentBalance::where(function ($query) use ($search) {
             $fillableColumns = (new StudentBalance)->getFillable();
-
+    
             foreach ($fillableColumns as $column) {
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
-        })
-        ->paginate($perPage, ['*'], 'page', $page);
-
+        });
+    
+        if ($includeStudentInfo) {
+            $query->with('student');
+        }
+    
+        // Execute the query and paginate the results
+        $studentBalances = $query->paginate($perPage, ['*'], 'page', $page);
+    
         return response()->json($studentBalances);
     }
+    
 
     /**
      * Store a newly created resource in storage.
