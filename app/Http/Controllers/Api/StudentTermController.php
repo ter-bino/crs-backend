@@ -24,7 +24,7 @@ class StudentTermController extends Controller
         $search = $request->input('search', ''); // Specify the search query
 
         /* Search through the fillable columns for the 'search' parameter */
-        $activityTypes = StudentTerm::where(function ($query) use ($search) {
+        $studentTerms = StudentTerm::where(function ($query) use ($search) {
             $fillableColumns = (new StudentTerm())->getFillable();
 
             foreach ($fillableColumns as $column) {
@@ -57,7 +57,7 @@ class StudentTermController extends Controller
         })
         ->paginate($perPage, ['*'], 'page', $page);
 
-        return response()->json($activityTypes);
+        return response()->json($studentTerms);
     }
 
     /**
