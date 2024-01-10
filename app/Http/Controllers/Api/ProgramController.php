@@ -27,6 +27,7 @@ class ProgramController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('college', 'department', 'student_terms', 'blocks')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($programs);

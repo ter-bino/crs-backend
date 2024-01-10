@@ -25,6 +25,7 @@ class ActivityTypeController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('activities')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($activityTypes);

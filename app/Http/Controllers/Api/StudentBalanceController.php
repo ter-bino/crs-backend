@@ -19,20 +19,15 @@ class StudentBalanceController extends Controller
         $includeStudentInfo = $request->input('student_info', false); // Check if 'student_info' parameter is set to true
 
         /* Search through the fillable columns for the 'search' parameter */
-        $query = StudentBalance::where(function ($query) use ($search) {
+        $studentBalances = StudentBalance::where(function ($query) use ($search) {
             $fillableColumns = (new StudentBalance)->getFillable();
     
             foreach ($fillableColumns as $column) {
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
-        });
-    
-        if ($includeStudentInfo) {
-            $query->with('student');
-        }
-    
-        // Execute the query and paginate the results
-        $studentBalances = $query->paginate($perPage, ['*'], 'page', $page);
+        })
+        ->with('student', 'payment_transactions', 'enrollment_fees')
+        ->paginate($perPage, ['*'], 'page', $page);
     
         return response()->json($studentBalances);
     }

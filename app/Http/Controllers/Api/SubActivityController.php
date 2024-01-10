@@ -25,6 +25,7 @@ class SubActivityController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('activity')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($subActivities);

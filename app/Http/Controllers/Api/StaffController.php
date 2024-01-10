@@ -25,6 +25,7 @@ class StaffController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('user_account', 'address', 'instructor_info', 'approved_add_drop_requests')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($staffs);

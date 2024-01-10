@@ -25,6 +25,7 @@ class BuildingController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('rooms')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($buildings);

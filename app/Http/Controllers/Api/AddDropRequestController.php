@@ -25,6 +25,7 @@ class AddDropRequestController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('requestor', 'approved_by', 'dropped_classes', 'added_classes')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($addDropRequests);

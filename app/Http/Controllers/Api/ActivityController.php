@@ -39,6 +39,7 @@ class ActivityController extends Controller
             function ($query) use ($order_dir) {
                 $query->orderBy('activity_id', $order_dir);
         })
+        ->with('activity_type', 'sub_activities')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($activityTypes);

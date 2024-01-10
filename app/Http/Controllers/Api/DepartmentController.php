@@ -25,6 +25,7 @@ class DepartmentController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('program', 'instructors')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($departments);

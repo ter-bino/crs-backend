@@ -26,6 +26,7 @@ class PaymentTransactionController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('student_balance')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($paymentTransactions);

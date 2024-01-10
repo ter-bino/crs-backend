@@ -25,6 +25,7 @@ class EnrollmentStatusController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('student_term')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($enrollmentStatuses);

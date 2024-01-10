@@ -28,6 +28,7 @@ class CollegeController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('student_term', 'program')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($colleges);

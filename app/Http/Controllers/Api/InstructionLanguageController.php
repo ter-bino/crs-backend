@@ -25,6 +25,7 @@ class InstructionLanguageController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('class')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($instructionLanguages);

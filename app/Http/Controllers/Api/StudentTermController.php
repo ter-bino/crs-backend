@@ -55,6 +55,7 @@ class StudentTermController extends Controller
 
 
         })
+        ->with('student', 'program', 'college', 'block', 'enrollment_status')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($studentTerms);

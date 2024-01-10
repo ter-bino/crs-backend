@@ -25,6 +25,7 @@ class SubjectController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('classes', 'co_requisites', 'pre_requisites')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($subjects);

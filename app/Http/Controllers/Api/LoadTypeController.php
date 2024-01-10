@@ -25,6 +25,7 @@ class LoadTypeController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('teaching_assignments', 'classes')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($loadTypes);
