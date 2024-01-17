@@ -26,6 +26,7 @@ class EnrollmentFeeController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('student_balances')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($enrollmentFees);

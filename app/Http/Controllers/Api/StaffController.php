@@ -25,6 +25,7 @@ class StaffController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('user_account', 'address', 'instructor_info', 'approved_add_drop_requests')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($staffs);
@@ -100,8 +101,8 @@ class StaffController extends Controller
         if ($staff) {
             $request->validate([
                 'user_account_id' => 'required|exists:user_account,user_account_id|integer',
-                'address_id' => 'required|exists:address, address_id|integer',
-                'employee_number' => 'required|unique:employee,' . $staff->staff_id .',staff_id',
+                'address_id' => 'required|exists:address,address_id|integer',
+                'employee_number' => 'required|unique:staff,employee_number,' . $staff->staff_id . ',staff_id',
                 'designation' => 'required|string',
                 'first_name' => 'required|string',
                 'last_name' => 'required|string',
@@ -113,38 +114,20 @@ class StaffController extends Controller
                 'citizenship' => 'required|string',
                 'birth_date' => 'required|date',
                 'birth_place' => 'required|string',
-                'contact_no' => 'required|unique:employee,' . $staff->staff_id .',staff_id',
-                'personal_email' => 'required|unique:employee,' . $staff->staff_id .',staff_id',
-                'TIN_no' => 'required|unique:employee,' . $staff->staff_id .',staff_id',
-                'GSIS_no' => 'required|unique:employee,' . $staff->staff_id .',staff_id',
+                'contact_no' => 'required|unique:staff,contact_no,' . $staff->staff_id . ',staff_id',
+                'personal_email' => 'required|unique:staff,personal_email,' . $staff->staff_id . ',staff_id',
+                'TIN_no' => 'required|unique:staff,TIN_no,' . $staff->staff_id . ',staff_id',
+                'GSIS_no' => 'required|unique:staff,GSIS_no,' . $staff->staff_id . ',staff_id',
             ]);
     
-            $staff->update([
-                'user_account_id' => $request->input('user_account_id'),
-                'address_id' => $request->input('address_id'),
-                'employee_number' => $request->input('employee_number'),
-                'designation' => $request->input('designation'),
-                'first_name' => $request->input('first_name'),
-                'last_name' => $request->input('last_name'),
-                'middle_name' => $request->input('middle_name'),
-                'name_extension' => $request->input('name_extension'),
-                'pedigree' => $request->input('pedigree'),
-                'sex' => $request->input('sex'),
-                'civil_status' => $request->input('civil_status'),
-                'citizenship' => $request->input('citizenship'),
-                'birth_date' => $request->input('birth_date'),
-                'birth_place' => $request->input('birth_place'),
-                'contact_no' => $request->input('contact_no'),
-                'personal_email' => $request->input('personal_email'),
-                'TIN_no' => $request->input('TIN_no'),
-                'GSIS_no' => $request->input('GSIS_no'),
-            ]);
+            $staff->update($request->all());
     
             return response()->json($staff);
         } else {
             return response()->json(['message' => 'Staff not found'], 404);
         }
     }
+    
 
     /**
      * Remove the specified resource from storage.

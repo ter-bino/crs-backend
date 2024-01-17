@@ -25,6 +25,7 @@ class AddressController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('resident')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($addresses);

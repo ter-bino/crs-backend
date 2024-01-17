@@ -17,11 +17,12 @@ class ActivityController extends Controller
         $perPage = $request->input('perPage', 10); // Specify the number of items per page
         $page = $request->input('page', 1); // Specify which page to get
         $search = $request->input('search', ''); // Specify the search query
+        $order_column = $request->input('order_column', 'activity_id'); // Specify the column to order by
+        $order_dir = $request->input('order_dir', 'asc'); // Specify the ordering direction
 
         /* Search through the fillable columns for the 'search' parameter */
         $activityTypes = Activity::where(function ($query) use ($search) {
             $fillableColumns = (new Activity())->getFillable();
-
             foreach ($fillableColumns as $column) {
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
@@ -30,6 +31,8 @@ class ActivityController extends Controller
                 $subQuery->where('activity_type_name', 'like', '%' . $search . '%');
             });
         })
+        ->orderBy($order_column, $order_dir)
+        ->with('activity_type', 'sub_activities')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($activityTypes);

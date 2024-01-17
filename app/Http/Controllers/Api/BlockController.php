@@ -25,6 +25,7 @@ class BlockController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('program', 'student_terms', 'students', 'classes')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($blocks);

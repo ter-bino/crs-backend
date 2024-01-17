@@ -25,6 +25,7 @@ class InstructorController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('staff_info', 'teaching_assignments', 'departments')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($instructors);

@@ -25,6 +25,7 @@ class UserAccountController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('student', 'staff', 'tokens', 'roles')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($colleges);

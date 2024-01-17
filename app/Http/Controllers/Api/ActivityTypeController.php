@@ -16,15 +16,25 @@ class ActivityTypeController extends Controller
         $perPage = $request->input('perPage', 10); // Specify the number of items per page
         $page = $request->input('page', 1); // Specify which page to get
         $search = $request->input('search', ''); // Specify the search query
+        $order_column = $request->input('order_column', 'activity_type_id'); // Specify the column to order by
+        $order_dir = $request->input('order_dir', 'asc'); // Specify the ordering direction
+
+        $fillableColumns = (new ActivityType())->getFillable();
 
         /* Search through the fillable columns for the 'search' parameter */
-        $activityTypes = ActivityType::where(function ($query) use ($search) {
-            $fillableColumns = (new ActivityType())->getFillable();
-
+        $activityTypes = ActivityType::where(function ($query) use ($search, $fillableColumns) {
             foreach ($fillableColumns as $column) {
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->when(in_array($order_column, $fillableColumns),
+            function ($query) use ($order_column, $order_dir) {
+                $query->orderBy($order_column, $order_dir);
+            },
+            function ($query) use ($order_dir) {
+                $query->orderBy('activity_type_id', $order_dir);
+        })
+        ->with('activities')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($activityTypes);

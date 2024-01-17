@@ -26,6 +26,10 @@ class StudentController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with(
+            'user_account', 'address', 'grades', 'add_drop_requests',
+            'student_terms', 'student_balances', 'classes', 'blocks'
+        )
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($students);

@@ -98,7 +98,9 @@ class AuthController extends Controller
                     'message' => 'You are logged in as ' . $user->plm_email_address . '.',
                     'user' => $user->plm_email_address,
                     'staff_info' => $user->staff,
+                    'staff_address' => $user->staff->address,
                     'student_info' => $user->student,
+                    'instructor_info' => $user->staff->instructor_info,
                     'roles' => $roles,
                 ]);
             }

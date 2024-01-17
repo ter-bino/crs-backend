@@ -25,6 +25,7 @@ class MeetingTypeController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('schedules')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($meetingTypes);

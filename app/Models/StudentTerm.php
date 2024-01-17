@@ -11,7 +11,9 @@ class StudentTerm extends Model
     use HasFactory;
     public $timestamps = true; 
     protected $table = 'student_term'; // connected table name
-    protected $primaryKey = ['student_id', 'program_id', 'academic_year', 'term']; //connected table name primary key
+    protected $primaryKey = 'student_id'; // Just one of the primary keys for Eloquent
+    protected $keyType = 'array'; // Indicate that the primary key is an array
+    public $incrementing = false; // Disable auto-incrementing for composite primary keys
 
     protected $fillable = [
         'academic_year',
@@ -22,6 +24,11 @@ class StudentTerm extends Model
         'scholastic_status',
         'is_graduating'
     ];
+
+    protected $casts = [
+        'is_graduating' => 'boolean',
+    ];
+
 
     public function student(): BelongsTo
     {

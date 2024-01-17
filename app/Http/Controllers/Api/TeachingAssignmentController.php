@@ -25,6 +25,7 @@ class TeachingAssignmentController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('instructor', 'consultation_hours', 'load_types', 'classes')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($teachingAssignments);

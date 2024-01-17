@@ -25,6 +25,11 @@ class ClassController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with(
+            'subject', 'instruction_language', 'grades',
+            'teaching_assignment', 'load_types', 'students',
+            'blocks', 'class_drops', 'class_adds'
+        )
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($classes);

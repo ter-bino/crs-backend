@@ -19,7 +19,7 @@ class InstructionLanguage extends Model
         'language'
     ];
 
-    public function class(): HasMany
+    public function classes(): HasMany
     {
         return $this->hasMany(M_Class::class, 'instruction_language_id', 'instruction_language_id');
     }

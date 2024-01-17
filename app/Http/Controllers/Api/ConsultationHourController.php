@@ -25,6 +25,7 @@ class ConsultationHourController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('teaching_assignment')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($consultationHours);

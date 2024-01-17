@@ -25,6 +25,7 @@ class ScheduleController extends Controller
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
         })
+        ->with('room', 'meeting_type', 'class')
         ->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($schedules);
