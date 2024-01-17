@@ -23,7 +23,6 @@ class ActivityController extends Controller
         /* Search through the fillable columns for the 'search' parameter */
         $activityTypes = Activity::where(function ($query) use ($search) {
             $fillableColumns = (new Activity())->getFillable();
-
             foreach ($fillableColumns as $column) {
                 $query->orWhere($column, 'like', '%' . $search . '%');
             }
@@ -32,13 +31,7 @@ class ActivityController extends Controller
                 $subQuery->where('activity_type_name', 'like', '%' . $search . '%');
             });
         })
-        ->when(in_array($order_column, (new Activity())->getFillable()),
-            function ($query) use ($order_column, $order_dir) {
-                $query->orderBy($order_column, $order_dir);
-            },
-            function ($query) use ($order_dir) {
-                $query->orderBy('activity_id', $order_dir);
-        })
+        ->orderBy($order_column, $order_dir)
         ->with('activity_type', 'sub_activities')
         ->paginate($perPage, ['*'], 'page', $page);
 
